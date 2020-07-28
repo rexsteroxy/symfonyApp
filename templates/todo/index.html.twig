@@ -5,7 +5,7 @@
 
 {% block form %}
 
-
+<div class="container">
 <div class="header">
     <h2>My To Do List</h2>
     <form action="{{path('create_task')}}" method="post">
@@ -13,21 +13,35 @@
         <button type="submit" class="addBtn">Add a task</button>
     </form>
 </div>
+</div>
+
 {% endblock %}
 
 
 {% block content %}
 
-    <ul>
+<div class="container">
+        <div class="row">
+
+        <div class="col-md-3"></div>
+         <div class="col-md-6">
+         <ul>
         {% for task in tasks %}
             <li {% if task.status%}class="checked"{% endif %}>
-                <a href="{{path('switch_status',{'id':task.id})}}"> <span class="task-list-item">{{task.title}} </span> </a
-                ><a onclick="return confirm('Are you sure to delete?')" href="{{path('task_delete',{'id':task.id})}}"><span class="close">X</span></a>
+                 <span class="task-list-item">{{task.title}} </span>
+                 <a onclick="return confirm('Are you sure to delete?')" href="{{path('task_delete',{'id':task.id})}}"><span class="close">DELETE</span></a>
+                 <a href="{{path('switch_status',{'id':task.id})}}"> <span>UPDATE</span></a>
             </li>
         {% endfor %}
 
 
-    </ul>
+    </ul> 
+         </div>
+          <div class="col-md-3"></div>
+       
+        </div>
+
+</div>
 
     <div class="navigation">
         {{ knp_pagination_render(tasks) }}

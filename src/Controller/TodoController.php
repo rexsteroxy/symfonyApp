@@ -11,7 +11,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/todo", name="todo")
+     * @Route("/", name="todo")
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {
